@@ -1,1 +1,10 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+    --font-family: "Inter", sans-serif;
+    --second-family: "Press Start 2P", sans-serif;
+    --title-wght: 700;
+    --text-wght: 400;
+    --back-color: #fff;
+    --accent-color: #000;
+    --hover-accent-color: rgba(0, 0, 0, 0.6);
+}
