@@ -10,10 +10,10 @@
 
 body {
   margin: 0;
-  font-size: 18px;
-  font-variation-settings: 'wght' var(--text-wght), 'opsz' 0;
-  line-height: 1.17;
-  font-family: var(--font-family);
+}
+
+img {
+  vertical-align: middle;
 }
 
 h1,

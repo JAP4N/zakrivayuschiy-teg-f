@@ -2,10 +2,18 @@
 :root {
     --font-family: "Inter", sans-serif;
     --second-family: "Press Start 2P", sans-serif;
+    --font-size-header-title: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
     --title-wght: 700;
     --text-wght: 400;
     --back-color: #fff;
+    --animation-btn-color: #fff;
     --accent-color: #000;
+    --heart-fill-color: red;
     --hover-accent-color: rgba(0, 0, 0, 0.6);
-    --font-size-sybtitle: 14px;
+    --label-color: rgba(255, 255, 255, 0.5);
+    --font-size-sybtitle: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+    --gradient-grid: 
+    repeating-linear-gradient(to right, #d3d3d3, transparent 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3, transparent 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
 }

@@ -14,42 +14,58 @@
 
 */
 
+.content-section {
+  margin: 0 auto;
+  inline-size: clamp(345px, 100% , 700px)
+}
+
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
-  background-color: var(--back-color);
-  color: var(--accent-color);
   padding-block-start: 100px;
   padding-block-end: 100px;
+  color: var(--accent-color);
+  font-family: var(--font-family);
+  font-size: 18px;
+  line-height: 1.17;
+  background-color: var(--back-color);
+  background-image: var(--gradient-grid);
+  background-size: cover;
+  background-attachment: fixed;
+  min-inline-size: 320px;
+  min-block-size: 100dvb;
+  font-variation-settings: 'wght' var(--text-wght), 'opsz' 0;
 }
 
 .header {
-  border: 2px solid var(--accent-color);
-  background-color: var(--back-color);
-  font-family: var(--second-family);
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 200px;
-  height: 100dvb;
+  /* height: 100dvb;
+  min-height: 200px; */
+  border: 2px solid var(--accent-color);
+  font-family: var(--second-family);
+  background-color: var(--back-color);
 
   .header__title {
-    font-size: 49px;
-    padding-block-start: 117px;
+    padding-block-start: clamp(7.3125rem, 7.0043rem + 1.315vw, 8.1875rem);
+    font-size: var(--font-size-header-title);
   }
 
   .header__subtitle {
-    font-size: var(--font-size-sybtitle);
     padding-block-start: 14px;
+    font-size: var(--font-size-sybtitle);
     text-transform: uppercase;
 
   }
 
   .header__theme-menu {
-    padding-block-start: 22px;
+    padding-block-start: 21px;
     padding-block-end: 24px;
     font-size: 14px;
     text-transform: uppercase;
+
+    @media (width > 375px) {
+      padding-block-end: 22px;
+    }
   }
 }
 
@@ -64,24 +80,221 @@
 
   .theme-menu__item {
     position: relative;
+    width: fit-content;
   }
 
-  & button {
+  .theme-menu__button {
+    border: none;
+    padding: 0;
     text-transform: uppercase;
     background-color: transparent;
-    border: none;
     cursor: pointer;
-    padding: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease;
   }
 
-  & button:disabled {
+  .theme-menu__button:focus {
+    outline: none;
+  }
+
+  .theme-menu__button:hover {
+    opacity: .6;
+  }
+
+  .theme-menu__button:disabled {
     color: var(--hover-accent-color);
+    pointer-events: none;
   }
 
-  & button:disabled:after {
+  .theme-menu__button::before {
+    content: '';
+    position: absolute;
+    block-size: 3px;
+    inline-size: 0;
+    inset-block-start: 15px;
+    background-color: var(--hover-accent-color);
+    opacity: 1;
+    transition: inline-size .3s ease;
+  }
+
+  .theme-menu__button:focus-visible {
+    opacity: .6;
+  }
+
+  .theme-menu__button:focus-visible::before {
+    inline-size: 100%;
+  }
+
+  .theme-menu__button:disabled::after {
     content: "▶";
     position: absolute;
     left: -19px;
     color: var(--hover-accent-color);
+    animation: moveanimation 1s  ease-in-out infinite;
   }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 100px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--back-color);
+
+  .content__title {
+    padding: 4px 10px 6px;
+    font-size: 18px;
+    font-variation-settings: 'wght' var(--title-wght);
+  }
+
+  .content__image {
+    position: relative;
+    border-block-start: 2px solid var(--accent-color);
+    border-block-end: 2px solid var(--accent-color);
+  }
+
+  .content__image {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .pictures__img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .content__label-text {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    padding-block-start: clamp(1.375rem, 1.33094rem + 0.188vw, 1.5rem);
+    padding-inline-end: clamp(0.6875rem, 0.40133rem + 1.221vw, 1.5rem);
+    font-family: var(--second-family);
+    font-size: 14px;
+    mix-blend-mode: hard-light;
+    text-shadow:     
+    -1px 0 var(--label-color), 
+    0 1px var(--label-color), 
+    1px 0 var(--label-color), 
+    0 -1px var(--label-color);
+
+    @supports((text-stroke: 1px var(--label-color)) or (text-stroke: 1px var(--label-color))) {
+      .content__label-text {
+        -webkit-text-store: 1px var(--label-color);
+        text-stroke: 1px var(--label-color);
+        text-shadow: none;
+      }
+    }
+  }
+
+  .content__text {
+    padding: 24px 25px 27px;
+  }
+
+  .content__text-memories {
+    padding: 0 25px 25px;
+  }
+  
+  .content__block-buttons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-inline-start: 25px;
+    padding-inline-end: 25px;
+    padding-block-end: 25px;
+  }
+
+  .card__icon-button {
+    padding: 1px;
+    border: 0;
+    block-size: 36px;
+    inline-size: 39px;
+    background-color: transparent;
+    margin-inline-end: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid transparent;
+    outline-offset: -1px;
+    transition: outline 0.3s ease;
+  }
+
+  .card__icon-button:focus {
+    outline: none;
+  }
+
+  .card__icon-button:focus-visible {
+    outline: 2px solid var(--accent-color);
+  }
+
+  .like-icon {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+
+  .card__like-button {
+    block-size: 38px;
+    inline-size: 130px;
+  }
+}
+
+.main__button {
+  position: relative;
+  border: 2px solid var(--accent-color);
+  font-family: var(--second-family);
+  font-size: 14px;
+  padding: 0;
+  background-color: var(--back-color);
+  box-shadow: 0 0 0 var(--accent-color);
+  transition: box-shadow .3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button__text {
+  position: relative;
+  color: var(--animation-btn-color);
+  mix-blend-mode: difference;
+}
+
+.main__button:focus {
+  outline: none;
+}
+
+.main__button:focus-visible {
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.main__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 0;
+  background-color: var(--accent-color);
+  transition: inline-size 0.5s ease-in-out;
+}
+.main__button:hover::before {
+  inline-size: 100%;
+}
+
+.main__button-memories {
+  block-size: 80px;
+  inline-size: 306px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-block-start: clamp(3.125rem, 3.03688rem + 0.376vw, 3.375rem);
+}
+
+.memories-icon {
+  block-size: clamp(1.3125rem, 1.15852rem + 0.6575vw, 1.775rem);
+  inline-size: clamp(1.3125rem, 1.15852rem + 0.6575vw, 1.775rem);
+  mix-blend-mode: difference;
+}
+
+.svgfloppy {
+  fill: var(--animation-btn-color);
 }

@@ -12,3 +12,96 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes moveanimation {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+  
+    50% {
+      transform: translateX(3px);
+    }
+  }
+
+  .core {
+    fill: var(--accent-color);
+    opacity: 0;
+    transition: opacity .3s ease-in-out, fill .3s ease-in-out;
+    transition-delay: .03s;
+  }
+
+  .like-icon:hover .core {
+    opacity: 1;
+  }
+
+  .like-icon:active .core {
+    fill: var(--heart-fill-color);
+  }
+
+  .like-icon.is-liked .core {
+    fill: var(--heart-fill-color);
+  }
+
+  .main-body {
+    fill: var(--accent-color);
+    opacity: 0;
+    transition: opacity .3s ease-in-out, fill .3s ease-in-out;
+    transition-delay: .05s;
+  }
+
+  .like-icon:hover .main-body {
+    opacity: 1;
+  }
+
+  .like-icon:active .main-body {
+    fill: var(--heart-fill-color);
+  }
+
+  .like-icon.is-liked .main-body {
+    fill: var(--heart-fill-color);
+  }
+
+  .contour:not(.is-liked) {
+    fill: var(--accent-color);
+    transition: fill 0.1s linear;
+  }
+
+  .like-icon.is-liked .contour {
+    fill: var(--heart-fill-color);
+    transition: fill .3s ease-in-out;
+    transition-delay: .06s;
+  }
+
+  .like-icon.is-liked .heart {
+    transform-origin: center;
+    animation: expansionHeart 0.3s ease-in;
+    transition-delay: 0.01s;
+  }
+
+  .like-icon.is-liked .sparks {
+    animation: sparkles .3s ease-in forwards;
+    transition-delay: .3s;
+    fill: var(--heart-fill-color);
+  }
+
+  @keyframes expansionHeart {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.5);
+    }
+  }
+
+  @keyframes sparkles {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
