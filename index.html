@@ -75,7 +75,11 @@
           </button>
         </div>
       </section>
-      <button class="main__button main__button-memories content-section">
+      <button class="main__button main__button-memories content-section"
+            type="button"
+            onclick="window['dialog-id'].showModal();"
+            aria-controls="dialog-id"
+      >
         <svg class="memories-icon">
           <use class="svgfloppy" href="./svg/floppy.svg#svg-floppy">
         </svg>
@@ -83,5 +87,17 @@
       </button>
     </main>
     <script src="./scripts/like.js"></script>
+    <dialog id="dialog-id">
+      <svg class="dialog-icon">
+        <use class="svgfloppy" href="./svg/floppy.svg#svg-floppy">
+      </svg>
+      <p class="dialog__text">Вставьте дискету, чтобы продолжить</p>
+      <button class="main__button main__button-dialog content-section"
+        type="button" 
+        onclick="window['dialog-id'].close()"
+      >
+        <span class="button__text">ок</span>
+      </button>
+  </dialog> 
   </body>
 </html>

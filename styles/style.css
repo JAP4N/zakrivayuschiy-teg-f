@@ -281,20 +281,83 @@
 
 .main__button-memories {
   block-size: 80px;
-  inline-size: 306px;
+  inline-size: clamp(19.375rem, 18.7368rem + 2.723vw, 21.1875rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   margin-block-start: clamp(3.125rem, 3.03688rem + 0.376vw, 3.375rem);
+
+  @media (width >= 1024px) {
+    block-size: 51px;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }
 
 .memories-icon {
-  block-size: clamp(1.3125rem, 1.15852rem + 0.6575vw, 1.775rem);
-  inline-size: clamp(1.3125rem, 1.15852rem + 0.6575vw, 1.775rem);
+  block-size: 28px;
+  inline-size: 28px;
   mix-blend-mode: difference;
+
+  @media (width >= 1024px) {
+    block-size: 21px;
+    inline-size: 21px;
+  }
 }
 
 .svgfloppy {
   fill: var(--animation-btn-color);
 }
+
+dialog {
+  background-color: var(--back-color);
+  padding: 30px 42px;
+  position: fixed;
+  inset: 0;
+  
+
+  .dialog__text {
+    grid-area: text;
+    color: var(--accent-color);
+    font-size: 14px;
+    font-family: var(--second-family);
+    line-height: 1.5;
+    inline-size: 100%;
+    max-inline-size: 198px;
+    text-transform: uppercase;
+    justify-self: end;
+  }
+
+  .dialog-icon {
+    grid-area: floppy;
+    align-self: center;
+    block-size: 39px;
+    inline-size: 39px;
+    mix-blend-mode: difference;
+  }
+
+  .main__button-dialog {
+    grid-area: btn;
+    align-self: end;
+    inline-size: 257px;
+    block-size: 38px;
+  }
+}
+
+dialog[open] {
+  display: grid;
+  grid-template: 
+  1fr 
+  1fr
+  /
+  min-content 1fr;
+  grid-template-areas: 
+  "floppy text"
+  "btn btn";
+}
+
+dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
