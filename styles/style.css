@@ -40,8 +40,6 @@
   flex-direction: column;
   align-items: center;
   margin-block-end: 100px;
-  /* height: 100dvb;
-  min-height: 200px; */
   border: 2px solid var(--accent-color);
   font-family: var(--second-family);
   background-color: var(--back-color);
@@ -210,13 +208,13 @@
     0 1px var(--label-color), 
     1px 0 var(--label-color), 
     0 -1px var(--label-color);
+  }
 
-    @supports((text-stroke: 1px var(--label-color)) or (text-stroke: 1px var(--label-color))) {
-      .content__label-text {
-        -webkit-text-store: 1px var(--label-color);
-        text-stroke: 1px var(--label-color);
-        text-shadow: none;
-      }
+  @supports((text-stroke: 1px var(--label-color)) or (text-stroke: 1px var(--label-color))) {
+    .content__label-text {
+      -webkit-text-store: 1px var(--label-color);
+      text-stroke: 1px var(--label-color);
+      text-shadow: none;
     }
   }
 
@@ -342,7 +340,7 @@
   fill: var(--animation-btn-color);
 }
 
-dialog {
+#dialog-id {
   background-color: var(--back-color);
   padding: 30px 42px;
   position: fixed;
@@ -369,9 +367,12 @@ dialog {
     mix-blend-mode: difference;
   }
 
-  .main__button-dialog {
-    grid-area: btn;
+  .dialog__form {
+    grid-area: form;
     align-self: end;
+  }
+
+  .main__button-dialog {
     inline-size: 257px;
     block-size: 38px;
   }
@@ -386,7 +387,7 @@ dialog[open] {
   min-content 1fr;
   grid-template-areas: 
   "floppy text"
-  "btn btn";
+  "form form";
   border: 2px solid var(--accent-color);
 }
 
