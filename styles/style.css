@@ -210,14 +210,6 @@
     0 -1px var(--label-color);
   }
 
-  @supports((text-stroke: 1px var(--label-color)) or (text-stroke: 1px var(--label-color))) {
-    .content__label-text {
-      -webkit-text-store: 1px var(--label-color);
-      text-stroke: 1px var(--label-color);
-      text-shadow: none;
-    }
-  }
-
   .content__text {
     padding: 24px 25px 27px;
   }
@@ -266,6 +258,14 @@
   .card__like-button {
     block-size: 38px;
     inline-size: 130px;
+  }
+}
+
+@supports((text-stroke: 1px var(--label-color)) or (text-stroke: 1px var(--label-color))) {
+  .content__label-text {
+    -webkit-text-store: 1px var(--label-color);
+    text-stroke: 1px var(--label-color);
+    text-shadow: none;
   }
 }
 
