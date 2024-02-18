@@ -12,18 +12,22 @@
   .core {
     fill: var(--back-color);
     transition: fill .3s linear;
+    transition-delay: .03s;
   }
 
   .like-icon:hover .core {
     fill: var(--accent-color);
+    transition-delay: 0s;
   }
 
   .like-icon:active .core {
     fill: var(--heart-fill-color);
+    transition-delay: 0s;
   }
 
   .like-icon.is-liked .core {
     fill: var(--heart-fill-color);
+    transition-delay: 0s;
   }
 
   .main-body {
