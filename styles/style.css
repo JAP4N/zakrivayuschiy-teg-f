@@ -117,7 +117,7 @@
   inset-inline-start: -19px;
   inset-block-start: 1px;
   color: var(--hover-accent-color);
-  animation: moveanimation 1s  ease-in-out infinite;
+  animation: moveanimation .5s ease-in-out infinite alternate;
 }
 
 .card {
@@ -368,7 +368,7 @@
   block-size: 38px;
 }
 
-dialog[open] {
+.dialog[open] {
   display: grid;
   grid-template: 
   1fr 
@@ -381,7 +381,7 @@ dialog[open] {
   border: 2px solid var(--accent-color);
 }
 
-dialog[open]::backdrop {
+.dialog[open]::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
